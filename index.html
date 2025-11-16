@@ -1,148 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Sanghamitra Johri</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Minimal clean font similar to Raima Mathew / Jon Barron -->
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 850px;
+            font-family: "Helvetica", "Arial", sans-serif;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 40px 20px;
             line-height: 1.6;
             color: #333;
         }
-        h1 { font-size: 32px; margin-bottom: 5px; }
-        h2 { margin-top: 40px; font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
         .links a {
-            margin-right: 15px;
+            margin: 0 12px;
             text-decoration: none;
             color: #0366d6;
+            font-size: 17px;
             font-weight: bold;
         }
-        .news-date {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        .section { margin-top: 25px; }
-        .project, .pub {
-            margin-bottom: 15px;
-        }
+
         img.profile {
-            width: 180px;
-            border-radius: 8px;
-            float: right;
-            margin-left: 25px;
+            width: 210px;
+            border-radius: 10px;
+            display: block;
+            margin: 25px auto;
         }
-        .clear { clear: both; }
+
+        .section {
+            margin-top: 30px;
+        }
+
+        .project {
+            margin-bottom: 20px;
+            background: #fafafa;
+            padding: 18px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        ul {
+            font-size: 18px;
+        }
     </style>
 </head>
 
 <body>
 
-<h1>Sanghamitra Johri</h1>
+    <!-- HEADER + NAME -->
+    <h1>Sanghamitra Johri</h1>
 
-<img src="profile.jpg" alt="Profile Photo" class="profile">
+    <!-- PROFILE PHOTO -->
+    <img src="profile.jpg" alt="Profile Photo" class="profile">
 
-<p>
-    AI Engineer specializing in Computer Vision, Deep Learning, and GPU-Accelerated Inference.
-    I build real-time vision systems — YOLO-based detectors, DeepSORT trackers,
-    accelerated Kalman filters, and production-ready PPE detection pipelines.
-</p>
+    <!-- ABOUT SECTION -->
+    <p class="center">
+        I am an AI Engineer specializing in <b>Computer Vision, GPU-Accelerated Inference, and Deep Learning</b>.
+        I build production-grade real-time vision systems — YOLO-based detection, DeepSORT tracking, GPU Kalman filtering,
+        and optimized PPE safety pipelines at scale.
+    </p>
 
-<p>
-    Currently an AI Engineer at <strong>Armada AI</strong>, where I work on multi-model
-    inference systems for safety monitoring, edge deployment, and GPU performance optimization.
-</p>
+    <p class="center">
+        My interests span <b>model optimization, hardware-aware AI, LLM inference profiling,</b> and
+        building high-performance vision pipelines for real-world environments.
+    </p>
 
-<div class="links">
-    <a href="#">Email</a>
-    <a href="resume.pdf" target="_blank">Resume</a>
-    <a href="https://github.com/sanghamitrajohri" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/sanghamitra-johri" target="_blank">LinkedIn</a>
-</div>
+    <!-- LINKS -->
+    <div class="links center">
+        <a href="#">Email</a>
+        <a href="resume.pdf" target="_blank">Resume</a>
+        <a href="https://github.com/sanghamitrajohri" target="_blank">Github</a>
+        <a href="https://www.linkedin.com/in/sanghamitra-johri" target="_blank">LinkedIn</a>
+    </div>
 
-<div class="clear"></div>
+    <!-- PROJECTS -->
+    <h2>Projects</h2>
 
-<!-- ------------ NEWS SECTION ------------- -->
-<h2>News</h2>
-<ul>
-    <li><span class="news-date">2025:</span> Built a YOLOv11-Pose + DeepSORT + PPE pipeline with full GPU profiling & heuristics.</li>
-    <li><span class="news-date">2024:</span> Worked on KV caching optimizations and performance profiling of LLMs.</li>
-    <li><span class="news-date">2024:</span> Completed MS in Electrical Engineering at University of Washington, Seattle.</li>
-</ul>
+    <div class="project">
+        <strong>PPE Detection & Tracking System</strong>
+        <p>
+            YOLOv11-Pose + DeepSORT + ResNet18 pipeline with GPU Kalman filtering, gear heuristics,
+            temporal smoothing, and complete inference profiling. Supports subframe batching,
+            dynamic cropping, and edge deployment.
+        </p>
+    </div>
 
-<!-- ------------ PROJECTS SECTION ------------- -->
-<h2>Projects</h2>
+    <div class="project">
+        <strong>GPU DeepSORT (PyTorch)</strong>
+        <p>
+            Implemented GPU-accelerated DeepSORT by replacing NumPy operations with torch operations.
+            Achieved faster embedding matching, cosine distance computation, and Kalman filtering.
+        </p>
+    </div>
 
-<div class="project">
-    <strong>PPE Detection & Tracking System</strong>  
-    <p>YOLOv11-Pose + DeepSORT + ResNet18 pipeline with GPU Kalman filtering, gear heuristics, temporal smoothing, and detailed inference logging.</p>
-</div>
+    <div class="project">
+        <strong>LLM KV Cache Optimization</strong>
+        <p>
+            Profiling KV caching behavior in nanoGPT-style transformer models.
+            Improved decode latency and memory usage for large sequence generation.
+        </p>
+    </div>
 
-<div class="project">
-    <strong>GPU DeepSORT (PyTorch)</strong>
-    <p>Converted classical DeepSORT into a GPU-based system by replacing NumPy ops with torch ops for Kalman filtering & cosine distance.</p>
-</div>
+    <div class="project">
+        <strong>Subframe-based YOLO Inference System</strong>
+        <p>
+            Designed a multi-grid subframe system to improve small-object detection accuracy for long-range cameras.
+            Uses merging heuristics and GPU batch inference.
+        </p>
+    </div>
 
-<div class="project">
-    <strong>LLM KV Cache Optimization</strong>
-    <p>Profiling decode-phase bottlenecks, implementing KV caching improvements, and nanoGPT-style architecture experimentation.</p>
-</div>
+    <!-- EXPERIENCE -->
+    <h2>Experience</h2>
 
-<div class="project">
-    <strong>Subframe-based YOLO Inference</strong>
-    <p>Split frames into overlapping grids for small-object accuracy improvements, with batch inference + merging heuristics.</p>
-</div>
+    <div class="section">
+        <strong>AI Engineer — Armada AI (2025–present)</strong>
+        <ul>
+            <li>Built high-performance PPE detection pipelines deployed on edge hardware.</li>
+            <li>Developed GPU-based DeepSORT with optimized Kalman filter in PyTorch.</li>
+            <li>Engineered subframe-based YOLO inference for small object detection.</li>
+            <li>Integrated fire & smoke detection, zone monitoring, and super-resolution models.</li>
+        </ul>
+    </div>
 
-<!-- ------------ EXPERIENCE SECTION ------------- -->
-<h2>Experience</h2>
+    <div class="section">
+        <strong>Graduate Researcher — University of Washington</strong>
+        <ul>
+            <li>Built a 3D radar yaw estimation algorithm using image correlation.</li>
+            <li>Created CUDA-optimized fine-grained tiling kernel, achieving 6.5× speedup.</li>
+        </ul>
+    </div>
 
-<div class="section">
-    <strong>AI Engineer — Armada AI (2025–present)</strong>
-    <ul>
-        <li>Built large-scale multi-model PPE detection pipelines for edge devices.</li>
-        <li>Developed GPU-accelerated DeepSORT with PyTorch Kalman filter.</li>
-        <li>Designed subframe inference + merging for small object detection.</li>
-        <li>Worked on fire/smoke detection, zone monitoring, and super-resolution inference.</li>
-    </ul>
-</div>
+    <div class="section">
+        <strong>Computer Vision Intern — Hood Tech Vision</strong>
+        <ul>
+            <li>Developed C++ object detection library for embedded UAV systems.</li>
+            <li>Worked on real-time drone perception pipelines.</li>
+        </ul>
+    </div>
 
-<div class="section">
-    <strong>Graduate Researcher — University of Washington</strong>
-    <ul>
-        <li>Worked on 3D radar yaw estimation using image correlation.</li>
-        <li>Developed CUDA kernels and fine-grained tiling using CUTLASS (6.5× speedup on Kepler GPU).</li>
-    </ul>
-</div>
+    <!-- PUBLICATIONS -->
+    <h2>Publications</h2>
 
-<div class="section">
-    <strong>Intern — Hood Tech Vision</strong>
-    <ul>
-        <li>Developed high-performance object detection library in C++.</li>
-        <li>Optimized embedded vision systems for drones.</li>
-    </ul>
-</div>
+    <div class="section">
+        <p><strong>Deep Neural Network-based Classification for Gait Assessment</strong><br>
+            IEEE Interdisciplinary Approaches — 2024</p>
 
-<!-- ------------ PUBLICATIONS SECTION ------------- -->
-<h2>Publications</h2>
+        <p><strong>LSTM-based Sensory Signal Classification for Gait Assessment</strong><br>
+            Elsevier — Predictive Modeling in Biomedical Data Mining and Analysis, 2022</p>
+    </div>
 
-<div class="pub">
-    <strong>Deep Neural Network-based Classification for Gait Assessment</strong><br>
-    IEEE Interdisciplinary Approaches in Technology and Management for Social Innovation, 2024.
-</div>
+    <br><br>
 
-<div class="pub">
-    <strong>LSTM-based Sensory Signal Classification for Gait Assessment</strong><br>
-    Elsevier, Predictive Modeling in Biomedical Data Mining and Analysis, 2022.
-</div>
-
-<!-- ------------ FOOTER ------------- -->
-<p style="margin-top:40px; font-size:14px; color:#666;">
-    Design inspired by Jon Barron's academic website.
-</p>
+    <p class="center" style="font-size:14px; color:#777;">
+        Designed with inspiration from Jon Barron's academic website.
+    </p>
 
 </body>
+
 </html>
