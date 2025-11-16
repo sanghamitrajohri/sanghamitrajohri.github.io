@@ -1,11 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sanghamitra Johri | AI Engineer</title>
+    <meta charset="utf-8">
+    <title>Sanghamitra Johri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 { font-size: 32px; margin-bottom: 5px; }
+        h2 { margin-top: 40px; font-size: 24px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        .links a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #0366d6;
+            font-weight: bold;
+        }
+        .news-date {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .section { margin-top: 25px; }
+        .project, .pub {
+            margin-bottom: 15px;
+        }
+        img.profile {
+            width: 180px;
+            border-radius: 8px;
+            float: right;
+            margin-left: 25px;
+        }
+        .clear { clear: both; }
+    </style>
 </head>
+
 <body>
-  <h1>Hello, I'm Sanghamitra 👋</h1>
-  <p>AI Engineer | Computer Vision | GPU Profiling | Edge Inference</p>
-  <p>Welcome to my website!</p>
+
+<h1>Sanghamitra Johri</h1>
+
+<img src="profile.jpg" alt="Profile Photo" class="profile">
+
+<p>
+    AI Engineer specializing in Computer Vision, Deep Learning, and GPU-Accelerated Inference.
+    I build real-time vision systems — YOLO-based detectors, DeepSORT trackers,
+    accelerated Kalman filters, and production-ready PPE detection pipelines.
+</p>
+
+<p>
+    Currently an AI Engineer at <strong>Armada AI</strong>, where I work on multi-model
+    inference systems for safety monitoring, edge deployment, and GPU performance optimization.
+</p>
+
+<div class="links">
+    <a href="#">Email</a>
+    <a href="resume.pdf" target="_blank">Resume</a>
+    <a href="https://github.com/sanghamitrajohri" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/sanghamitra-johri" target="_blank">LinkedIn</a>
+</div>
+
+<div class="clear"></div>
+
+<!-- ------------ NEWS SECTION ------------- -->
+<h2>News</h2>
+<ul>
+    <li><span class="news-date">2025:</span> Built a YOLOv11-Pose + DeepSORT + PPE pipeline with full GPU profiling & heuristics.</li>
+    <li><span class="news-date">2024:</span> Worked on KV caching optimizations and performance profiling of LLMs.</li>
+    <li><span class="news-date">2024:</span> Completed MS in Electrical Engineering at University of Washington, Seattle.</li>
+</ul>
+
+<!-- ------------ PROJECTS SECTION ------------- -->
+<h2>Projects</h2>
+
+<div class="project">
+    <strong>PPE Detection & Tracking System</strong>  
+    <p>YOLOv11-Pose + DeepSORT + ResNet18 pipeline with GPU Kalman filtering, gear heuristics, temporal smoothing, and detailed inference logging.</p>
+</div>
+
+<div class="project">
+    <strong>GPU DeepSORT (PyTorch)</strong>
+    <p>Converted classical DeepSORT into a GPU-based system by replacing NumPy ops with torch ops for Kalman filtering & cosine distance.</p>
+</div>
+
+<div class="project">
+    <strong>LLM KV Cache Optimization</strong>
+    <p>Profiling decode-phase bottlenecks, implementing KV caching improvements, and nanoGPT-style architecture experimentation.</p>
+</div>
+
+<div class="project">
+    <strong>Subframe-based YOLO Inference</strong>
+    <p>Split frames into overlapping grids for small-object accuracy improvements, with batch inference + merging heuristics.</p>
+</div>
+
+<!-- ------------ EXPERIENCE SECTION ------------- -->
+<h2>Experience</h2>
+
+<div class="section">
+    <strong>AI Engineer — Armada AI (2025–present)</strong>
+    <ul>
+        <li>Built large-scale multi-model PPE detection pipelines for edge devices.</li>
+        <li>Developed GPU-accelerated DeepSORT with PyTorch Kalman filter.</li>
+        <li>Designed subframe inference + merging for small object detection.</li>
+        <li>Worked on fire/smoke detection, zone monitoring, and super-resolution inference.</li>
+    </ul>
+</div>
+
+<div class="section">
+    <strong>Graduate Researcher — University of Washington</strong>
+    <ul>
+        <li>Worked on 3D radar yaw estimation using image correlation.</li>
+        <li>Developed CUDA kernels and fine-grained tiling using CUTLASS (6.5× speedup on Kepler GPU).</li>
+    </ul>
+</div>
+
+<div class="section">
+    <strong>Intern — Hood Tech Vision</strong>
+    <ul>
+        <li>Developed high-performance object detection library in C++.</li>
+        <li>Optimized embedded vision systems for drones.</li>
+    </ul>
+</div>
+
+<!-- ------------ PUBLICATIONS SECTION ------------- -->
+<h2>Publications</h2>
+
+<div class="pub">
+    <strong>Deep Neural Network-based Classification for Gait Assessment</strong><br>
+    IEEE Interdisciplinary Approaches in Technology and Management for Social Innovation, 2024.
+</div>
+
+<div class="pub">
+    <strong>LSTM-based Sensory Signal Classification for Gait Assessment</strong><br>
+    Elsevier, Predictive Modeling in Biomedical Data Mining and Analysis, 2022.
+</div>
+
+<!-- ------------ FOOTER ------------- -->
+<p style="margin-top:40px; font-size:14px; color:#666;">
+    Design inspired by Jon Barron's academic website.
+</p>
+
 </body>
 </html>
