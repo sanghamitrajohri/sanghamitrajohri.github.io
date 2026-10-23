@@ -43,3 +43,26 @@ span.highlight { background-color: #ffffd0; }
   .intro-photo { width: 55%; }
   .item { grid-template-columns: 1fr; gap: 10px; }
 }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  gap: 22px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #eee;
+}
+.topnav a { font-size: 15px; }
+.heading { scroll-margin-top: 64px; }
+
+@media (max-width: 600px) {
+  .topnav { justify-content: center; gap: 16px; }
+}
