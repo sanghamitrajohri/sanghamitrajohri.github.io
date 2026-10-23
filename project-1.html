@@ -5,22 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KV-Caching for Transformer Inference — Sanghamitra Johri</title>
 <meta name="description" content="Case study: implementing KV-caching in nanoGPT and profiling transformer inference for a 2x speedup.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="site-header">
   <nav class="nav container">
-    <a href="index.html" class="logo">Sanghamitra Johri</a>
+    <a href="index.html" class="logo">SJ.</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#work">Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
       <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
       <li><a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a></li>
     </ul>
@@ -93,7 +90,7 @@
 
   <section class="case-section container">
     <h2>Evaluation</h2>
-    <div class="table-wrap"><table class="bench-table">
+    <table class="bench-table">
       <thead>
         <tr><th>Metric</th><th>Before</th><th>After</th><th>Δ</th></tr>
       </thead>
@@ -101,7 +98,7 @@
         <tr><td>Per-token generation speed</td><td>baseline</td><td>KV-cached</td><td>2.0× faster</td></tr>
         <tr><td>Batch inference (batch sizes 1–64)</td><td>baseline</td><td>optimized</td><td>3× speedup</td></tr>
       </tbody>
-    </table></div>
+    </table>
   </section>
 
   <section class="case-section container">
@@ -124,7 +121,7 @@
   </section>
 </main>
 
-<footer class="site-footer container">
+<footer class="site-footer">
   <p>© <span id="year"></span> Sanghamitra Johri</p>
 </footer>
 
