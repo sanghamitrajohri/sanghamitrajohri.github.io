@@ -2,179 +2,158 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sanghamitra Johri — AI Engineer</title>
-<meta name="description" content="Sanghamitra Johri — AI Engineer building efficient real-time computer vision and multimodal AI systems, from model to deployment.">
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanghamitra Johri</title>
+<meta name="author" content="Sanghamitra Johri">
+<meta name="description" content="Sanghamitra Johri — AI Engineer working on GPU inference for vision and language models.">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
 </head>
 <body>
+<main class="page">
 
-<header class="site-header">
-  <nav class="nav container">
-    <a href="index.html" class="logo">SJ.</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#work">Projects</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
-      <li><a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-    </ul>
-  </nav>
-</header>
+  <section class="intro">
+    <div class="intro-text">
+      <h1 class="name">Sanghamitra Johri</h1>
+      <p>
+        I am an AI Engineer at Armada in Seattle,
+        where I build real-time computer vision and multimodal inference systems on GPUs.
+        Recently I re-architected an object tracking pipeline to run fully on the GPU, cutting host CPU demand by 25×,
+        and scaled it from 10 to 100+ parallel video streams on A100s.
+      </p>
+      <p>
+        I'm interested in making AI systems fast, cheap and reliable: GPU inference, LLM serving, CUDA kernels,
+        and agents that recover from their own failures. I have an M.S. in Electrical &amp; Computer Engineering from the
+        <a href="https://www.washington.edu/" target="_blank" rel="noopener noreferrer">University of Washington</a>.
+      </p>
+      <p class="links">
+        <a href="mailto:johrisanghamitra@gmail.com">Email</a> &nbsp;/&nbsp;
+        <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a> &nbsp;/&nbsp;
+        <a href="https://www.linkedin.com/in/sanghamitra-johri/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &nbsp;/&nbsp;
+        <a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </div>
+    <div class="intro-photo">
+      <img src="images/profile.jpg" alt="Sanghamitra Johri" onerror="this.parentElement.remove()">
+    </div>
+  </section>
 
-<main>
-  <section class="hero container">
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow">AI Engineer</p>
-        <h1>I build efficient multimodal AI systems.</h1>
-        <p class="subline">Computer Vision <span>·</span> VLMs <span>·</span> GPU Inference</p>
-        <div class="hero-actions">
-          <a href="#work" class="btn btn-primary">Explore my work →</a>
-          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn">Resume</a>
-          <a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
-        </div>
-      </div>
+  <h2 class="heading">Projects</h2>
 
-      <svg class="arch-graphic arch-hero" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simplified inference pipeline diagram">
-        <defs>
-          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
-          </marker>
-        </defs>
-        <line class="flow-line" x1="55" y1="40" x2="55" y2="86" stroke-width="1.4" marker-end="url(#arrow)"/>
-        <line class="flow-line" x1="55" y1="134" x2="55" y2="180" stroke-width="1.4" marker-end="url(#arrow)"/>
-        <line class="flow-line" x1="130" y1="110" x2="176" y2="110" stroke-width="1.4" marker-end="url(#arrow)"/>
-
-        <g>
-          <rect class="node-fill node-stroke" x="10" y="10" width="90" height="30" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="55" y="29" text-anchor="middle">INPUT</text>
-        </g>
-        <g class="accent-node">
-          <rect class="node-fill node-stroke" x="10" y="86" width="90" height="48" rx="6" stroke-width="1.4"/>
-          <text class="node-text" x="55" y="106" text-anchor="middle">MODEL</text>
-          <text class="node-text" x="55" y="120" text-anchor="middle" font-size="9">CUDA / TensorRT</text>
-        </g>
-        <g>
-          <rect class="node-fill node-stroke" x="10" y="180" width="90" height="30" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="55" y="199" text-anchor="middle">OUTPUT</text>
-        </g>
-        <g>
-          <rect class="node-fill node-stroke" x="176" y="88" width="130" height="44" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="241" y="106" text-anchor="middle">Nsight / Profiler</text>
-          <text class="node-text" x="241" y="120" text-anchor="middle" font-size="9">latency · throughput</text>
-        </g>
+  <article class="item">
+    <a class="thumb" href="project-5.html" aria-label="RecoverIQ case study">
+      <svg viewBox="0 0 160 110" role="img" aria-label="Agent, Jev and policy in a recovery loop">
+        <rect width="160" height="110" rx="6" fill="#fff4e6"/>
+        <rect x="12" y="18" width="40" height="24" rx="4" fill="#fff" stroke="#e2a35a"/>
+        <text x="32" y="34" text-anchor="middle">agent</text>
+        <rect x="60" y="18" width="40" height="24" rx="4" fill="#f09228"/>
+        <text x="80" y="34" text-anchor="middle" fill="#fff" font-weight="700">Jev</text>
+        <rect x="108" y="18" width="40" height="24" rx="4" fill="#fff" stroke="#e2a35a"/>
+        <text x="128" y="34" text-anchor="middle">policy</text>
+        <path d="M52 30h8M100 30h8" stroke="#b36b1c"/>
+        <path d="M128 42v26H32V42" fill="none" stroke="#b36b1c" stroke-dasharray="3 3"/>
+        <text x="80" y="86" text-anchor="middle">retry · switch · restore</text>
+        <text x="80" y="98" text-anchor="middle">ask human · stop</text>
       </svg>
-    </div>
-  </section>
-
-  <section id="work" class="section container">
-    <p class="section-label">Selected Engineering Work</p>
-    <h2 class="section-heading">Systems I've designed, optimized, and shipped.</h2>
-
-    <a class="project-featured reveal" href="project-5.html" style="margin-bottom: 18px;">
-      <p class="project-tag">PROJECT 05 · NEW — DEMOED AT AI TINKERERS</p>
-      <h3>RecoverIQ: Cost-Aware Recovery for AI Coding Agents</h3>
-      <p class="project-flow">Agent fails → Jev picks the cheapest fix → policy vetoes anything unaffordable → 42.9 clean fixes per $ vs 25.3 for hand-written rules (108 live runs)</p>
-      <p class="project-stack">Python · LangGraph · Claude API · TypeSafe Jev · Streamlit</p>
-      <span class="featured-cta">Read the case study →</span>
     </a>
-
-    <div class="work-grid">
-      <a class="project-card reveal" href="project-1.html">
-        <p class="project-tag">PROJECT 01</p>
-        <h3>KV-Caching for Transformer Inference</h3>
-        <p class="project-flow">nanoGPT → Profiling → KV-cache → 2× faster decoding</p>
-        <p class="project-stack">CUDA · PyTorch · Nsight Systems</p>
-        <span class="project-arrow">→</span>
-      </a>
-      <a class="project-card reveal" href="project-2.html">
-        <p class="project-tag">PROJECT 02</p>
-        <h3>GPU-Accelerated Matrix Multiplication</h3>
-        <p class="project-flow">Naive CPU loop → CUDA thread grid → parallel execution</p>
-        <p class="project-stack">CUDA · C++</p>
-        <span class="project-arrow">→</span>
-      </a>
-      <a class="project-card reveal" href="project-4.html">
-        <p class="project-tag">PROJECT 04 · IN PROGRESS</p>
-        <h3>Detector + VLM Grounding System</h3>
-        <p class="project-flow">Video → Detector → Person ROIs → VLM (personal project)</p>
-        <p class="project-stack">PyTorch · Detection models · VLMs</p>
-        <span class="project-arrow">→</span>
-      </a>
+    <div>
+      <a href="project-5.html" class="papertitle">RecoverIQ: Cost-Aware Recovery for AI Coding Agents</a>
+      <p class="meta">2026 · demoed at AI Tinkerers ·
+        <a href="https://github.com/sanghamitrajohri/recoveriq" target="_blank" rel="noopener noreferrer">code</a> /
+        <a href="https://sanghamitrajohri.github.io/recoveriq/" target="_blank" rel="noopener noreferrer">project page</a> /
+        <a href="project-5.html">case study</a></p>
+      <p>When a coding agent fails, RecoverIQ uses TypeSafe's Jev to pick the cheapest fix that will work (retry, switch model,
+        restore a checkpoint, ask a human, or stop) instead of blindly retrying. On 108 live runs with Claude it reached
+        <span class="highlight">42.9 clean fixes per dollar, against 25.3 for hand-written rules</span>.</p>
     </div>
+  </article>
 
-    <a class="project-featured reveal" href="project-3.html">
-      <p class="project-tag">PROJECT 03 · PUBLISHED — AIAA SCITECH 2024</p>
-      <h3>BVLOS Drone Search &amp; Rescue Communications</h3>
-
-      <svg class="featured-diagram" viewBox="0 0 640 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: search drone linked to a relay drone, linked to a ground station, extending communication range">
-        <defs>
-          <marker id="arrow3s" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker>
-          <marker id="arrow3e" markerWidth="8" markerHeight="8" refX="0" refY="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="currentColor"/></marker>
-        </defs>
-        <line class="flow-line" x1="150" y1="70" x2="270" y2="70" stroke-width="1.4" marker-end="url(#arrow3s)" marker-start="url(#arrow3e)"/>
-        <line class="flow-line" x1="410" y1="70" x2="530" y2="70" stroke-width="1.4" marker-end="url(#arrow3s)" marker-start="url(#arrow3e)"/>
-
-        <g class="accent-node">
-          <rect class="node-fill node-stroke" x="10" y="45" width="140" height="50" rx="6" stroke-width="1.4"/>
-          <text class="node-text" x="80" y="66" text-anchor="middle">Search Drone</text>
-          <text class="node-text" x="80" y="80" text-anchor="middle" font-size="9">sensor + video feed</text>
-        </g>
-        <g>
-          <rect class="node-fill node-stroke" x="270" y="45" width="140" height="50" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="340" y="66" text-anchor="middle">Relay Drone</text>
-          <text class="node-text" x="340" y="80" text-anchor="middle" font-size="9">extends comm range</text>
-        </g>
-        <g>
-          <rect class="node-fill node-stroke" x="530" y="45" width="100" height="50" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="580" y="66" text-anchor="middle">Ground</text>
-          <text class="node-text" x="580" y="80" text-anchor="middle" font-size="9">Station</text>
-        </g>
+  <article class="item">
+    <a class="thumb" href="project-1.html" aria-label="KV-caching case study">
+      <svg viewBox="0 0 160 110" role="img" aria-label="Cached key and value blocks reused across decoding steps">
+        <rect width="160" height="110" rx="6" fill="#eef4fc"/>
+        <g fill="#bcd3f1"><rect x="16" y="22" width="18" height="18" rx="2"/><rect x="38" y="22" width="18" height="18" rx="2"/><rect x="60" y="22" width="18" height="18" rx="2"/><rect x="82" y="22" width="18" height="18" rx="2"/></g>
+        <rect x="104" y="22" width="18" height="18" rx="2" fill="#1772d0"/>
+        <g fill="#bcd3f1"><rect x="16" y="50" width="18" height="18" rx="2"/><rect x="38" y="50" width="18" height="18" rx="2"/><rect x="60" y="50" width="18" height="18" rx="2"/><rect x="82" y="50" width="18" height="18" rx="2"/></g>
+        <rect x="104" y="50" width="18" height="18" rx="2" fill="#1772d0"/>
+        <text x="132" y="35">K</text><text x="132" y="63">V</text>
+        <text x="80" y="92" text-anchor="middle">cached · new token only</text>
       </svg>
-
-      <span class="featured-cta">Read the case study →</span>
     </a>
-  </section>
-
-  <section id="about" class="section container">
-    <p class="section-label">About</p>
-    <h2 class="section-heading">Focused on production inference, computer vision, and multimodal systems.</h2>
-    <p class="about-text">
-      I work across the stack — from model architecture down to the CUDA kernel — building real-time
-      vision and multimodal inference systems that hold up in production, not just in a notebook.
-      Currently an AI Engineer at Armada Inc., working on production computer vision and multimodal
-      inference systems — project details are confidential, but the work below reflects the same class
-      of problems I work on day to day.
-    </p>
-    <p class="stack-line">
-      <span class="cat">Languages</span> Python · C/C++<br>
-      <span class="cat">ML / Inference</span> PyTorch · TensorRT · vLLM · SGLang · Triton<br>
-      <span class="cat">Vision</span> OpenCV · RT-DETR · YOLO<br>
-      <span class="cat">Systems</span> CUDA · Nsight Systems · Docker · Kubernetes
-    </p>
-  </section>
-
-  <section id="contact" class="section container">
-    <div class="contact-inner">
-      <div>
-        <p class="section-label">Get in Touch</p>
-        <p>Based in Seattle, WA — open to conversations on ML systems, inference performance, and multimodal AI.</p>
-      </div>
-      <div class="hero-actions">
-        <a href="mailto:johrisanghamitra@gmail.com" class="btn btn-primary">Email</a>
-        <a href="https://www.linkedin.com/in/sanghamitra-johri/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
-      </div>
+    <div>
+      <a href="project-1.html" class="papertitle">KV-Caching and Profiling for Transformer Inference</a>
+      <p class="meta">2024 · University of Washington ·
+        <a href="project-1.html">case study</a></p>
+      <p>Implemented KV-caching in nanoGPT for a <span class="highlight">2.0× faster per-token generation</span>, and profiled the
+        Llama decode layer (Flash-Attention, MLPs, GEMMs) across batch sizes 1–64 and sequence lengths up to 16K with
+        Nsight Systems, finding a 3× speedup for batched inference.</p>
     </div>
-  </section>
+  </article>
+
+  <article class="item">
+    <a class="thumb" href="https://github.com/sanghamitrajohri/Cuda_programming" target="_blank" rel="noopener noreferrer" aria-label="CUDA programming repository">
+      <svg viewBox="0 0 160 110" role="img" aria-label="Matrix tiles mapped to GPU thread blocks">
+        <rect width="160" height="110" rx="6" fill="#eefaf1"/>
+        <g stroke="#7cc196" fill="#fff">
+          <rect x="22" y="16" width="20" height="20"/><rect x="42" y="16" width="20" height="20"/><rect x="62" y="16" width="20" height="20"/>
+          <rect x="22" y="36" width="20" height="20"/><rect x="42" y="36" width="20" height="20" fill="#3aa35f"/><rect x="62" y="36" width="20" height="20"/>
+          <rect x="22" y="56" width="20" height="20"/><rect x="42" y="56" width="20" height="20"/><rect x="62" y="56" width="20" height="20"/>
+        </g>
+        <text x="94" y="40">thread</text><text x="94" y="53">blocks</text>
+        <text x="80" y="96" text-anchor="middle">shared-memory tiling</text>
+      </svg>
+    </a>
+    <div>
+      <a href="https://github.com/sanghamitrajohri/Cuda_programming" class="papertitle" target="_blank" rel="noopener noreferrer">GPU-Accelerated Matrix Multiplication in CUDA</a>
+      <p class="meta">University of Washington ·
+        <a href="https://github.com/sanghamitrajohri/Cuda_programming" target="_blank" rel="noopener noreferrer">code</a></p>
+      <p>A parallel matrix multiplication written from scratch in CUDA and C++, mapping matrix tiles to thread blocks and
+        using shared-memory tiling to cut redundant global memory reads.</p>
+    </div>
+  </article>
+
+  <h2 class="heading">Publications</h2>
+
+  <article class="item">
+    <a class="thumb" href="project-3.html" aria-label="BVLOS drone case study">
+      <svg viewBox="0 0 160 110" role="img" aria-label="Search drone linked through a relay drone to a ground station">
+        <rect width="160" height="110" rx="6" fill="#f3effb"/>
+        <circle cx="26" cy="40" r="11" fill="#8a6fd1"/><circle cx="80" cy="30" r="11" fill="#fff" stroke="#8a6fd1"/>
+        <rect x="122" y="62" width="26" height="20" rx="3" fill="#fff" stroke="#8a6fd1"/>
+        <path d="M37 37l32-5M89 37l35 26" stroke="#8a6fd1" stroke-dasharray="3 3"/>
+        <text x="26" y="64" text-anchor="middle">search</text><text x="80" y="54" text-anchor="middle">relay</text>
+        <text x="135" y="96" text-anchor="middle">ground</text>
+      </svg>
+    </a>
+    <div>
+      <a href="project-3.html" class="papertitle">Beyond Visual Line-of-Sight Uncrewed Aerial Vehicle for Search and Locate Operation</a>
+      <p class="meta"><strong>S. Johri</strong>, E. Pollack, E. Madewell, H. Kuni, D. Broyles, J. Vagners, K. Leung<br>
+        <em>AIAA SciTech</em>, 2024 · <a href="project-3.html">case study</a></p>
+      <p>A relay-drone communication system for search and rescue beyond line of sight, extending the effective search
+        radius to 1.5× that of single-drone methods.</p>
+    </div>
+  </article>
+
+  <ul class="pubs">
+    <li><span class="papertitle-plain">Sensory Data Classification for Gait Assessment using Deep Neural Networks: A Comparative Study with SGD and Adam Optimizer</span><br>
+      <em>IEEE Interdisciplinary Approaches in Technology and Management for Social Innovation</em>, 2024</li>
+    <li><span class="papertitle-plain">LSTM neural network-based classification of sensory signals for healthy and unhealthy gait assessment</span><br>
+      <em>Predictive Modeling in Biomedical Data Mining and Analysis</em>, Elsevier, 2022</li>
+  </ul>
+
+  <h2 class="heading">Experience</h2>
+  <ul class="exp">
+    <li><strong>AI Engineer</strong>, Armada, Bellevue WA <span class="when">2025 – present</span><br>
+      Real-time GPU vision inference: fully GPU-resident object tracking, multi-GPU benchmarking, 10 → 100+ streams at 2× throughput.</li>
+    <li><strong>AI Engineer, Systems</strong>, University of Washington <span class="when">2024 – 2025</span><br>
+      LLM inference optimization with KV-caching and profiling of the Llama decode layer.</li>
+    <li><strong>Software Engineering Intern</strong>, Hood Tech Vision, Oregon <span class="when">2023</span><br>
+      Multi-threaded C++ image processing pipeline with runtime-loaded filters, 3× throughput on high-resolution video.</li>
+    <li><strong>AI Engineer</strong>, Newspace Research &amp; Technology, Bangalore <span class="when">2021 – 2022</span><br>
+      UAV perception: small-object tracking in EO/IR imagery, YOLO pruned and quantized for NVIDIA Jetson.</li>
+  </ul>
+
+  <p class="credit">Template from <a href="https://jonbarron.info/" target="_blank" rel="noopener noreferrer">Jon Barron</a>.</p>
 </main>
-
-<footer class="site-footer">
-  <p>© <span id="year"></span> Sanghamitra Johri</p>
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
