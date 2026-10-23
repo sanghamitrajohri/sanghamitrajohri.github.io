@@ -4,175 +4,145 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sanghamitra Johri — AI Engineer</title>
-<meta name="description" content="Sanghamitra Johri — AI Engineer building efficient real-time computer vision and multimodal AI systems, from model to deployment.">
+<meta name="description" content="Sanghamitra Johri — AI Engineer working on GPU inference for vision and language models.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="site-header">
   <nav class="nav container">
-    <a href="index.html" class="logo">SJ.</a>
+    <a href="index.html" class="logo">Sanghamitra Johri</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#work">Projects</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
       <li><a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a></li>
     </ul>
   </nav>
 </header>
 
-<main>
-  <section class="hero container">
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow">AI Engineer</p>
-        <h1>I build efficient multimodal AI systems.</h1>
-        <p class="subline">Computer Vision <span>·</span> VLMs <span>·</span> GPU Inference</p>
-        <div class="hero-actions">
-          <a href="#work" class="btn btn-primary">Explore my work →</a>
-          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn">Resume</a>
-          <a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
-        </div>
-      </div>
-
-      <svg class="arch-graphic arch-hero" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simplified inference pipeline diagram">
-        <defs>
-          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-            <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
-          </marker>
-        </defs>
-        <line class="flow-line" x1="55" y1="40" x2="55" y2="86" stroke-width="1.4" marker-end="url(#arrow)"/>
-        <line class="flow-line" x1="55" y1="134" x2="55" y2="180" stroke-width="1.4" marker-end="url(#arrow)"/>
-        <line class="flow-line" x1="130" y1="110" x2="176" y2="110" stroke-width="1.4" marker-end="url(#arrow)"/>
-
-        <g>
-          <rect class="node-fill node-stroke" x="10" y="10" width="90" height="30" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="55" y="29" text-anchor="middle">INPUT</text>
-        </g>
-        <g class="accent-node">
-          <rect class="node-fill node-stroke" x="10" y="86" width="90" height="48" rx="6" stroke-width="1.4"/>
-          <text class="node-text" x="55" y="106" text-anchor="middle">MODEL</text>
-          <text class="node-text" x="55" y="120" text-anchor="middle" font-size="9">CUDA / TensorRT</text>
-        </g>
-        <g>
-          <rect class="node-fill node-stroke" x="10" y="180" width="90" height="30" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="55" y="199" text-anchor="middle">OUTPUT</text>
-        </g>
-        <g>
-          <rect class="node-fill node-stroke" x="176" y="88" width="130" height="44" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="241" y="106" text-anchor="middle">Nsight / Profiler</text>
-          <text class="node-text" x="241" y="120" text-anchor="middle" font-size="9">latency · throughput</text>
-        </g>
-      </svg>
-    </div>
+<main class="container">
+  <section class="intro">
+    <h1>I make AI systems fast, cheap, and reliable.</h1>
+    <p class="lede">
+      I'm an AI engineer at <strong>Armada</strong> in Seattle, working on GPU inference for vision and
+      language models: profiling, re-architecting pipelines, and scaling them from a demo to production load.
+      Most recently I took a real-time vision pipeline from 10 to 100+ video streams on A100s.
+    </p>
+    <p class="intro-links">
+      <a href="mailto:johrisanghamitra@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/sanghamitra-johri/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+    </p>
   </section>
 
-  <section id="work" class="section container">
-    <p class="section-label">Selected Engineering Work</p>
-    <h2 class="section-heading">Systems I've designed, optimized, and shipped.</h2>
+  <section id="work" class="block">
+    <h2 class="block-title">Selected work</h2>
 
-    <a class="project-featured reveal" href="project-5.html" style="margin-bottom: 18px;">
-      <p class="project-tag">PROJECT 05 · NEW — DEMOED AT AI TINKERERS</p>
-      <h3>RecoverIQ: Cost-Aware Recovery for AI Coding Agents</h3>
-      <p class="project-flow">Agent fails → Jev picks the cheapest fix → policy vetoes anything unaffordable → 42.9 clean fixes per $ vs 25.3 for hand-written rules (108 live runs)</p>
-      <p class="project-stack">Python · LangGraph · Claude API · TypeSafe Jev · Streamlit</p>
-      <span class="featured-cta">Read the case study →</span>
+    <a class="work reveal" href="project-5.html">
+      <div class="work-metric">
+        <span class="metric-num">42.9</span>
+        <span class="metric-label">clean fixes per $, <br>vs 25.3 for hand-written rules</span>
+      </div>
+      <div class="work-body">
+        <p class="work-meta">2026 · Demoed at AI Tinkerers</p>
+        <h3>RecoverIQ</h3>
+        <p>When an AI coding agent fails, RecoverIQ picks the cheapest fix that will actually work instead of
+          blindly retrying: switch models, restore a checkpoint, ask a human, or stop. Benchmarked on 108 live runs
+          with Claude and TypeSafe's Jev.</p>
+        <p class="work-stack">LangGraph · Claude API · Jev · Python</p>
+        <span class="work-cta">Read case study →</span>
+      </div>
     </a>
 
-    <div class="work-grid">
-      <a class="project-card reveal" href="project-1.html">
-        <p class="project-tag">PROJECT 01</p>
+    <a class="work reveal" href="project-1.html">
+      <div class="work-metric">
+        <span class="metric-num">2.0×</span>
+        <span class="metric-label">faster per-token <br>generation</span>
+      </div>
+      <div class="work-body">
+        <p class="work-meta">2024 · University of Washington</p>
         <h3>KV-Caching for Transformer Inference</h3>
-        <p class="project-flow">nanoGPT → Profiling → KV-cache → 2× faster decoding</p>
-        <p class="project-stack">CUDA · PyTorch · Nsight Systems</p>
-        <span class="project-arrow">→</span>
-      </a>
-      <a class="project-card reveal" href="project-2.html">
-        <p class="project-tag">PROJECT 02</p>
-        <h3>GPU-Accelerated Matrix Multiplication</h3>
-        <p class="project-flow">Naive CPU loop → CUDA thread grid → parallel execution</p>
-        <p class="project-stack">CUDA · C++</p>
-        <span class="project-arrow">→</span>
-      </a>
-      <a class="project-card reveal" href="project-4.html">
-        <p class="project-tag">PROJECT 04 · IN PROGRESS</p>
-        <h3>Detector + VLM Grounding System</h3>
-        <p class="project-flow">Video → Detector → Person ROIs → VLM (personal project)</p>
-        <p class="project-stack">PyTorch · Detection models · VLMs</p>
-        <span class="project-arrow">→</span>
-      </a>
-    </div>
-
-    <a class="project-featured reveal" href="project-3.html">
-      <p class="project-tag">PROJECT 03 · PUBLISHED — AIAA SCITECH 2024</p>
-      <h3>BVLOS Drone Search &amp; Rescue Communications</h3>
-
-      <svg class="featured-diagram" viewBox="0 0 640 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: search drone linked to a relay drone, linked to a ground station, extending communication range">
-        <defs>
-          <marker id="arrow3s" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker>
-          <marker id="arrow3e" markerWidth="8" markerHeight="8" refX="0" refY="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="currentColor"/></marker>
-        </defs>
-        <line class="flow-line" x1="150" y1="70" x2="270" y2="70" stroke-width="1.4" marker-end="url(#arrow3s)" marker-start="url(#arrow3e)"/>
-        <line class="flow-line" x1="410" y1="70" x2="530" y2="70" stroke-width="1.4" marker-end="url(#arrow3s)" marker-start="url(#arrow3e)"/>
-
-        <g class="accent-node">
-          <rect class="node-fill node-stroke" x="10" y="45" width="140" height="50" rx="6" stroke-width="1.4"/>
-          <text class="node-text" x="80" y="66" text-anchor="middle">Search Drone</text>
-          <text class="node-text" x="80" y="80" text-anchor="middle" font-size="9">sensor + video feed</text>
-        </g>
-        <g>
-          <rect class="node-fill node-stroke" x="270" y="45" width="140" height="50" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="340" y="66" text-anchor="middle">Relay Drone</text>
-          <text class="node-text" x="340" y="80" text-anchor="middle" font-size="9">extends comm range</text>
-        </g>
-        <g>
-          <rect class="node-fill node-stroke" x="530" y="45" width="100" height="50" rx="6" stroke-width="1.2"/>
-          <text class="node-text" x="580" y="66" text-anchor="middle">Ground</text>
-          <text class="node-text" x="580" y="80" text-anchor="middle" font-size="9">Station</text>
-        </g>
-      </svg>
-
-      <span class="featured-cta">Read the case study →</span>
+        <p>Added KV-caching to nanoGPT and profiled the Llama decode layer (attention, MLPs, GEMMs) across
+          batch sizes and sequence lengths to find where time really goes.</p>
+        <p class="work-stack">CUDA · PyTorch · Nsight Systems</p>
+        <span class="work-cta">Read case study →</span>
+      </div>
     </a>
   </section>
 
-  <section id="about" class="section container">
-    <p class="section-label">About</p>
-    <h2 class="section-heading">Focused on production inference, computer vision, and multimodal systems.</h2>
-    <p class="about-text">
-      I work across the stack — from model architecture down to the CUDA kernel — building real-time
-      vision and multimodal inference systems that hold up in production, not just in a notebook.
-      Currently an AI Engineer at Armada Inc., working on production computer vision and multimodal
-      inference systems — project details are confidential, but the work below reflects the same class
-      of problems I work on day to day.
-    </p>
-    <p class="stack-line">
-      <span class="cat">Languages</span> Python · C/C++<br>
-      <span class="cat">ML / Inference</span> PyTorch · TensorRT · vLLM · SGLang · Triton<br>
-      <span class="cat">Vision</span> OpenCV · RT-DETR · YOLO<br>
-      <span class="cat">Systems</span> CUDA · Nsight Systems · Docker · Kubernetes
-    </p>
+  <section id="experience" class="block">
+    <h2 class="block-title">Experience</h2>
+    <ol class="timeline">
+      <li>
+        <p class="tl-when">2025 — now</p>
+        <div>
+          <h3>AI Engineer, Armada</h3>
+          <p>Real-time vision inference. Moved object tracking from a hybrid CPU–GPU design to fully GPU-resident
+            PyTorch, cutting host CPU demand 25×, and scaled to 100+ parallel streams at 2× throughput.</p>
+        </div>
+      </li>
+      <li>
+        <p class="tl-when">2024 — 2025</p>
+        <div>
+          <h3>AI Engineer, Systems · University of Washington</h3>
+          <p>LLM inference optimization: KV-caching in nanoGPT and profiling of the Llama decode layer, with a 3× speedup for batched inference.</p>
+        </div>
+      </li>
+      <li>
+        <p class="tl-when">2023</p>
+        <div>
+          <h3>Software Engineering Intern, Hood Tech Vision</h3>
+          <p>Multi-threaded C++ image pipeline with runtime-loaded filters: 3× throughput on high-resolution video.</p>
+        </div>
+      </li>
+      <li>
+        <p class="tl-when">2021 — 2022</p>
+        <div>
+          <h3>AI Engineer, Newspace Research &amp; Technology</h3>
+          <p>UAV perception: small-object tracking in EO/IR imagery, and YOLO models pruned and quantized for NVIDIA Jetson.</p>
+        </div>
+      </li>
+    </ol>
   </section>
 
-  <section id="contact" class="section container">
-    <div class="contact-inner">
-      <div>
-        <p class="section-label">Get in Touch</p>
-        <p>Based in Seattle, WA — open to conversations on ML systems, inference performance, and multimodal AI.</p>
-      </div>
-      <div class="hero-actions">
-        <a href="mailto:johrisanghamitra@gmail.com" class="btn btn-primary">Email</a>
-        <a href="https://www.linkedin.com/in/sanghamitra-johri/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
-      </div>
-    </div>
+  <section id="publications" class="block">
+    <h2 class="block-title">Publications</h2>
+    <ul class="pubs">
+      <li>
+        <a href="project-3.html">Beyond Visual Line-of-Sight Uncrewed Aerial Vehicle for Search and Locate Operation</a>
+        <span>AIAA SciTech 2024 · relay-drone system that extended search radius 1.5×</span>
+      </li>
+      <li>
+        Sensory Data Classification for Gait Assessment using Deep Neural Networks
+        <span>IEEE, 2024</span>
+      </li>
+      <li>
+        LSTM neural network-based classification of sensory signals for gait assessment
+        <span>Elsevier, 2022</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2 class="block-title">Education</h2>
+    <ul class="pubs">
+      <li>M.S. Electrical &amp; Computer Engineering <span>University of Washington, 2024</span></li>
+      <li>B.Tech. Electronics &amp; Communication Engineering <span>Rajasthan Technical University, 2020</span></li>
+    </ul>
   </section>
 </main>
 
-<footer class="site-footer">
-  <p>© <span id="year"></span> Sanghamitra Johri</p>
+<footer class="site-footer container">
+  <p>Open to conversations on ML systems and inference performance. <a href="mailto:johrisanghamitra@gmail.com">johrisanghamitra@gmail.com</a></p>
+  <p class="muted">© <span id="year"></span> Sanghamitra Johri</p>
 </footer>
 
 <script src="script.js"></script>
