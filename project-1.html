@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KV-Caching for Transformer Inference — Sanghamitra Johri</title>
+<meta name="description" content="Case study: implementing KV-caching in nanoGPT and profiling transformer inference for a 2x speedup.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="logo">SJ.</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#work">Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+      <li><a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="case-header container">
+    <a class="case-back" href="index.html#work">&larr; All projects</a>
+    <h1>KV-Caching for Transformer Inference</h1>
+    <p class="case-role">Independent research, University of Washington &mdash; built on the open-source nanoGPT codebase</p>
+    <p class="case-stack">CUDA · PyTorch · NVIDIA Nsight Systems</p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Problem</h2>
+    <p>
+      nanoGPT's naive autoregressive decoding recomputes attention over the full sequence at every
+      generation step — redoing work it already did on the previous token. On longer sequences that
+      wasted compute dominates generation latency.
+    </p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Architecture</h2>
+    <svg class="case-diagram" viewBox="0 0 640 190" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: before, attention recomputed every step; after, cached key and value tensors reused">
+      <defs>
+        <marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker>
+      </defs>
+      <text class="node-text" x="10" y="18" font-size="10" font-weight="700">BEFORE — per-step recompute</text>
+      <line class="flow-line" x1="90" y1="40" x2="130" y2="40" stroke-width="1.2" marker-end="url(#a1)"/>
+      <line class="flow-line" x1="290" y1="40" x2="330" y2="40" stroke-width="1.2" marker-end="url(#a1)"/>
+      <rect class="node-fill node-stroke" x="10" y="24" width="80" height="32" rx="5" stroke-width="1"/>
+      <text class="node-text" x="50" y="44" text-anchor="middle" font-size="10">New token</text>
+      <rect class="node-fill node-stroke" x="130" y="24" width="160" height="32" rx="5" stroke-width="1"/>
+      <text class="node-text" x="210" y="44" text-anchor="middle" font-size="10">Recompute all K/V</text>
+      <rect class="node-fill node-stroke" x="330" y="24" width="110" height="32" rx="5" stroke-width="1"/>
+      <text class="node-text" x="385" y="44" text-anchor="middle" font-size="10">Next token</text>
+
+      <text class="node-text" x="10" y="98" font-size="10" font-weight="700">AFTER — KV-cached</text>
+      <line class="flow-line" x1="90" y1="120" x2="130" y2="120" stroke-width="1.4" marker-end="url(#a1)"/>
+      <line class="flow-line" x1="290" y1="120" x2="330" y2="120" stroke-width="1.4" marker-end="url(#a1)"/>
+      <rect class="node-fill node-stroke" x="10" y="104" width="80" height="32" rx="5" stroke-width="1"/>
+      <text class="node-text" x="50" y="124" text-anchor="middle" font-size="10">New token</text>
+      <g class="accent-node">
+        <rect class="node-fill node-stroke" x="130" y="104" width="160" height="32" rx="5" stroke-width="1.4"/>
+        <text class="node-text" x="210" y="124" text-anchor="middle" font-size="10">Reuse cached K/V</text>
+      </g>
+      <rect class="node-fill node-stroke" x="330" y="104" width="110" height="32" rx="5" stroke-width="1"/>
+      <text class="node-text" x="385" y="124" text-anchor="middle" font-size="10">Next token</text>
+      <text class="node-text" x="10" y="168" font-size="9">Only the new token's key/value pair is computed each step.</text>
+    </svg>
+  </section>
+
+  <section class="case-section container">
+    <h2>What I Built</h2>
+    <ul class="case-list">
+      <li>Implemented KV-caching in nanoGPT so each decoding step reuses previously computed key/value tensors instead of recomputing them.</li>
+      <li>Benchmarked transformer components — Flash-Attention, MLPs, GEMM operations — across batch sizes (1–64) and sequence lengths (256–16,384) to see where time was actually spent.</li>
+    </ul>
+  </section>
+
+  <section class="case-section container">
+    <h2>Optimization</h2>
+    <ul class="case-list">
+      <li>Used NVIDIA Nsight Systems and the PyTorch Profiler to separate memory-bandwidth-bound stages from compute-bound ones.</li>
+      <li>Swept batch size and sequence length together, since their interaction — not either alone — determined arithmetic intensity.</li>
+    </ul>
+  </section>
+
+  <section class="case-section container">
+    <h2>Evaluation</h2>
+    <table class="bench-table">
+      <thead>
+        <tr><th>Metric</th><th>Before</th><th>After</th><th>Δ</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Per-token generation speed</td><td>baseline</td><td>KV-cached</td><td>2.0× faster</td></tr>
+        <tr><td>Batch inference (batch sizes 1–64)</td><td>baseline</td><td>optimized</td><td>3× speedup</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="case-section container">
+    <h2>Results</h2>
+    <p>
+      KV-caching alone delivered a 2× improvement in per-token generation speed. Sweeping batch size
+      and sequence length surfaced a further 3× speedup opportunity for batched inference — the kind
+      of finding that only shows up when you profile across the full parameter space instead of one
+      configuration.
+    </p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Lessons</h2>
+    <p>
+      The naive implementation isn't slow because the GPU is slow — it's slow because it's asked to
+      redo work. KV-caching is a small code change with an outsized effect, exactly the kind of thing
+      profiling is good at surfacing and intuition alone tends to miss.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Sanghamitra Johri</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

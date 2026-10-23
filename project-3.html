@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BVLOS Drone Search &amp; Rescue Communications — Sanghamitra Johri</title>
+<meta name="description" content="Case study: a communications relay system for beyond-visual-line-of-sight drone search-and-rescue operations, published at AIAA SciTech 2024.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="logo">SJ.</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#work">Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+      <li><a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="case-header container">
+    <a class="case-back" href="index.html#work">&larr; All projects</a>
+    <h1>BVLOS Drone Search &amp; Rescue Communications</h1>
+    <p class="case-role">Research Assistant, Project Lead — Control and Trustworthy Robotics Laboratory, University of Washington</p>
+    <p class="case-stack">Python · Wireshark · UAV Systems</p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Problem</h2>
+    <p>
+      Search-and-rescue drones operating beyond visual line of sight (BVLOS) lose direct radio contact
+      with the ground station once they're far enough away or blocked by terrain — which caps how far
+      a search area can practically extend before the team loses control and telemetry.
+    </p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Architecture</h2>
+    <svg class="case-diagram" viewBox="0 0 640 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: search drone linked to a relay drone, linked to a ground station, extending communication range">
+      <defs>
+        <marker id="a3s" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker>
+        <marker id="a3e" markerWidth="8" markerHeight="8" refX="0" refY="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="currentColor"/></marker>
+      </defs>
+      <line class="flow-line" x1="150" y1="70" x2="270" y2="70" stroke-width="1.4" marker-end="url(#a3s)" marker-start="url(#a3e)"/>
+      <line class="flow-line" x1="410" y1="70" x2="530" y2="70" stroke-width="1.4" marker-end="url(#a3s)" marker-start="url(#a3e)"/>
+      <g class="accent-node">
+        <rect class="node-fill node-stroke" x="10" y="45" width="140" height="50" rx="6" stroke-width="1.4"/>
+        <text class="node-text" x="80" y="66" text-anchor="middle">Search Drone</text>
+        <text class="node-text" x="80" y="80" text-anchor="middle" font-size="9">sensor + video feed</text>
+      </g>
+      <g>
+        <rect class="node-fill node-stroke" x="270" y="45" width="140" height="50" rx="6" stroke-width="1.2"/>
+        <text class="node-text" x="340" y="66" text-anchor="middle">Relay Drone</text>
+        <text class="node-text" x="340" y="80" text-anchor="middle" font-size="9">extends comm range</text>
+      </g>
+      <g>
+        <rect class="node-fill node-stroke" x="530" y="45" width="100" height="50" rx="6" stroke-width="1.2"/>
+        <text class="node-text" x="580" y="66" text-anchor="middle">Ground</text>
+        <text class="node-text" x="580" y="80" text-anchor="middle" font-size="9">Station</text>
+      </g>
+      <text class="node-text" x="10" y="130" font-size="9">Bidirectional link: continuous sensor data down, control commands up.</text>
+    </svg>
+  </section>
+
+  <section class="case-section container">
+    <h2>What I Built</h2>
+    <ul class="case-list">
+      <li>Proposed and led development of a communication system relaying continuous sensor data and control flow between a search drone, a relay drone, and the ground station for BVLOS search-and-locate operations.</li>
+      <li>Led a group of graduate and undergraduate researchers in the Aeronautics &amp; Astronautics department to design and validate the system.</li>
+      <li>Analyzed Wireshark packet captures in Python to evaluate communication quality and reliability under real flight conditions.</li>
+    </ul>
+  </section>
+
+  <section class="case-section container">
+    <h2>Optimization</h2>
+    <p>
+      Data-driven analysis of link quality and dropout patterns from flight-test packet captures
+      informed where the relay needed to hold position, and what telemetry to prioritize when the link
+      degraded.
+    </p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Evaluation</h2>
+    <table class="bench-table">
+      <thead>
+        <tr><th>Metric</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Effective search radius vs. single-drone baseline</td><td>1.5× farther</td></tr>
+        <tr><td>Peer review</td><td>Published, AIAA SciTech 2024</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="case-section container">
+    <h2>Results</h2>
+    <p>
+      The relay architecture extended the effective search radius to 1.5× that of existing single-drone
+      methods. The work was peer-reviewed and published:
+    </p>
+    <p style="color: var(--text-dim); font-size: 0.92rem; max-width: 700px;">
+      S. Johri, E. Pollack, E. Madewell, H. Kuni, D. Broyles, J. Vagners, K. Leung,
+      <em>“Beyond Visual Line-of-Sight Uncrewed Aerial Vehicle for Search and Locate Operation,”</em>
+      AIAA SciTech 2024.
+    </p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Lessons</h2>
+    <p>
+      A relay drone sounds like a purely mechanical fix, but most of the hard problems were about data
+      — deciding what telemetry to prioritize over a lossy, intermittent link, and building the
+      evaluation pipeline to actually prove the relay helped rather than assuming it did.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Sanghamitra Johri</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

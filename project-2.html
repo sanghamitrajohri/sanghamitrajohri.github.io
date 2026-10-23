@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPU-Accelerated Matrix Multiplication — Sanghamitra Johri</title>
+<meta name="description" content="Case study: implementing parallel matrix multiplication in CUDA and C++ to understand GPU performance from first principles.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="logo">SJ.</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#work">Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+      <li><a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="case-header container">
+    <a class="case-back" href="index.html#work">&larr; All projects</a>
+    <h1>GPU-Accelerated Matrix Multiplication</h1>
+    <p class="case-role">Independent project, University of Washington</p>
+    <p class="case-stack">CUDA · C++</p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Problem</h2>
+    <p>
+      Matrix multiplication is the computational core of nearly every deep learning workload, and a
+      naive CPU implementation leaves almost all of a GPU's parallelism on the table. I wanted to
+      understand, from first principles, what it actually takes to make matrix multiplication fast on
+      a GPU — the layer PyTorch normally hides.
+    </p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Architecture</h2>
+    <svg class="case-diagram" viewBox="0 0 640 170" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: matrices A and B mapped to a GPU thread grid of blocks and threads, producing output matrix C">
+      <defs>
+        <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker>
+      </defs>
+      <line class="flow-line" x1="115" y1="85" x2="155" y2="85" stroke-width="1.4" marker-end="url(#a2)"/>
+      <line class="flow-line" x1="405" y1="85" x2="445" y2="85" stroke-width="1.4" marker-end="url(#a2)"/>
+      <g>
+        <rect class="node-fill node-stroke" x="10" y="55" width="105" height="60" rx="6" stroke-width="1.2"/>
+        <text class="node-text" x="62" y="82" text-anchor="middle">Matrices A, B</text>
+        <text class="node-text" x="62" y="96" text-anchor="middle" font-size="9">host memory</text>
+      </g>
+      <g class="accent-node">
+        <rect class="node-fill node-stroke" x="155" y="45" width="250" height="80" rx="6" stroke-width="1.4"/>
+        <text class="node-text" x="280" y="68" text-anchor="middle">GPU Thread Grid</text>
+        <text class="node-text" x="280" y="82" text-anchor="middle" font-size="9">blocks × threads, tiled</text>
+        <text class="node-text" x="280" y="96" text-anchor="middle" font-size="9">shared-memory tiling</text>
+      </g>
+      <g>
+        <rect class="node-fill node-stroke" x="445" y="55" width="105" height="60" rx="6" stroke-width="1.2"/>
+        <text class="node-text" x="497" y="82" text-anchor="middle">Matrix C</text>
+        <text class="node-text" x="497" y="96" text-anchor="middle" font-size="9">output</text>
+      </g>
+    </svg>
+  </section>
+
+  <section class="case-section container">
+    <h2>What I Built</h2>
+    <ul class="case-list">
+      <li>Implemented a parallel matrix multiplication application in CUDA and C++.</li>
+      <li>Mapped matrix tiles to GPU thread blocks to exploit the GPU's parallel execution model instead of a sequential CPU loop.</li>
+      <li>Used shared-memory tiling to cut down on redundant global memory reads across threads in the same block.</li>
+    </ul>
+  </section>
+
+  <section class="case-section container">
+    <h2>Optimization</h2>
+    <p class="placeholder">Benchmark sweep across matrix sizes and tile configurations — write-up coming soon.</p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Evaluation</h2>
+    <table class="bench-table">
+      <thead>
+        <tr><th>Metric</th><th>Naive CPU</th><th>CUDA kernel</th><th>Δ</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="tbd">TBD</td><td class="tbd">—</td><td class="tbd">—</td><td class="tbd">—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="case-section container">
+    <h2>Results</h2>
+    <p class="placeholder">Benchmark numbers coming soon.</p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Lessons</h2>
+    <p>
+      Writing the kernel by hand — thread indexing, shared-memory tiles, bank conflicts — made every
+      abstraction PyTorch normally hides feel concrete. It's a lot easier to reason about why a GPU
+      kernel is slow in production once you've had to write one from scratch.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Sanghamitra Johri</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

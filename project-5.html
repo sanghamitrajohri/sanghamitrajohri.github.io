@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RecoverIQ — Sanghamitra Johri</title>
+<meta name="description" content="Case study: RecoverIQ, a cost-aware recovery controller for AI coding agents guided by TypeSafe's Jev decision model — live benchmark of 108 runs with real Claude and Jev.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="index.html" class="logo">SJ.</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#work">Projects</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+      <li><a href="https://github.com/sanghamitrajohri" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="case-header container">
+    <a class="case-back" href="index.html#work">&larr; All projects</a>
+    <h1>RecoverIQ: Cost-Aware Recovery for AI Coding Agents</h1>
+    <p class="case-role">Personal project, demoed live at AI Tinkerers (Oct 2026) &mdash;
+      <a href="https://github.com/sanghamitrajohri/recoveriq" target="_blank" rel="noopener noreferrer">code</a> ·
+      <a href="https://sanghamitrajohri.github.io/recoveriq/" target="_blank" rel="noopener noreferrer">project page</a></p>
+    <p class="case-stack">Python · LangGraph · Claude API · TypeSafe Jev · Streamlit · macOS sandbox-exec</p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Problem</h2>
+    <p>
+      When a coding agent fails, the usual fix is to retry. But failures have different causes:
+      a provider blip, a model that ran out of output tokens, a workspace that was silently damaged,
+      a requirement nobody wrote down, or a task that can't be done. Each one has a different cheap fix,
+      and retrying blindly pays for the same failure again and again.
+    </p>
+    <p>
+      <strong>Research question:</strong> does Jev-guided recovery deliver more <em>verified</em>
+      task completions per dollar than fixed retry or hand-written recovery rules?
+    </p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Architecture</h2>
+    <svg class="case-diagram" viewBox="0 0 680 210" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: the agent attempts a fix, pytest checks it in a sandbox, on failure Jev proposes a recovery action, the policy can veto it, and the chosen action loops back to the agent">
+      <defs>
+        <marker id="a5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker>
+      </defs>
+      <line class="flow-line" x1="120" y1="50" x2="160" y2="50" stroke-width="1.2" marker-end="url(#a5)"/>
+      <line class="flow-line" x1="290" y1="50" x2="330" y2="50" stroke-width="1.2" marker-end="url(#a5)"/>
+      <line class="flow-line" x1="460" y1="50" x2="500" y2="50" stroke-width="1.2" marker-end="url(#a5)"/>
+      <line class="flow-line" x1="580" y1="74" x2="580" y2="120" stroke-width="1.2" marker-end="url(#a5)"/>
+      <path class="flow-line" d="M500 150 L65 150 L65 82" stroke-width="1.2" marker-end="url(#a5)"/>
+
+      <rect class="node-fill node-stroke" x="10" y="26" width="110" height="48" rx="5" stroke-width="1"/>
+      <text class="node-text" x="65" y="46" text-anchor="middle" font-size="10">Coding agent</text>
+      <text class="node-text" x="65" y="60" text-anchor="middle" font-size="9">Claude Haiku / Opus</text>
+
+      <rect class="node-fill node-stroke" x="160" y="26" width="130" height="48" rx="5" stroke-width="1"/>
+      <text class="node-text" x="225" y="46" text-anchor="middle" font-size="10">pytest in sandbox</text>
+      <text class="node-text" x="225" y="60" text-anchor="middle" font-size="9">visible + hidden tests</text>
+
+      <g class="accent-node">
+        <rect class="node-fill node-stroke" x="330" y="26" width="130" height="48" rx="5" stroke-width="1.4"/>
+        <text class="node-text" x="395" y="46" text-anchor="middle" font-size="10">Jev decides</text>
+        <text class="node-text" x="395" y="60" text-anchor="middle" font-size="9">~100 ms · &lt;$0.0001</text>
+      </g>
+
+      <rect class="node-fill node-stroke" x="500" y="26" width="160" height="48" rx="5" stroke-width="1"/>
+      <text class="node-text" x="580" y="46" text-anchor="middle" font-size="10">Policy can veto</text>
+      <text class="node-text" x="580" y="60" text-anchor="middle" font-size="9">budget · time · safety</text>
+
+      <rect class="node-fill node-stroke" x="500" y="120" width="160" height="60" rx="5" stroke-width="1"/>
+      <text class="node-text" x="580" y="138" text-anchor="middle" font-size="9">retry · switch model</text>
+      <text class="node-text" x="580" y="152" text-anchor="middle" font-size="9">restore checkpoint</text>
+      <text class="node-text" x="580" y="166" text-anchor="middle" font-size="9">ask human · terminate</text>
+
+      <text class="node-text" x="10" y="200" font-size="9">LangGraph state machine; the policy's rules always override Jev.</text>
+    </svg>
+  </section>
+
+  <section class="case-section container">
+    <h2>What I Built</h2>
+    <ul class="case-list">
+      <li>A real coding agent that reads a buggy file and its visible tests, asks Claude for a fix, validates the reply, and runs pytest under macOS <code>sandbox-exec</code> (no network, no home-directory reads, writes only to the workspace).</li>
+      <li>A LangGraph controller with five recovery actions that really do something: a new LLM call on retry, a bigger model on switch, hash-verified checkpoint restore, a human-in-the-loop pause, and terminate.</li>
+      <li>Jev integration through TypeSafe's SDK, plus a deterministic policy layer that rejects unaffordable, unsafe or invalid actions. Jev proposes; the policy disposes.</li>
+      <li>A benchmark harness of 10 reproducible failure scenarios with hidden acceptance tests, a per-event cost ledger, and a Streamlit dashboard that races strategies side by side.</li>
+      <li>An integrity audit that flags "successes" where the model gamed the tests or left helper files damaged, so only <em>clean</em> fixes count.</li>
+    </ul>
+  </section>
+
+  <section class="case-section container">
+    <h2>Evaluation</h2>
+    <p class="case-note">Live run, 2026-10-19: 108 runs with real Claude and real Jev, $2.41 total. 3 repeats × 9 tasks × 4 strategies.</p>
+    <table class="bench-table">
+      <thead>
+        <tr><th>Strategy</th><th>Clean fixes</th><th>API cost</th><th>Clean fixes per $</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Fixed retry</td><td>12 / 27</td><td>$0.38</td><td>31.3</td></tr>
+        <tr><td>Rule-based</td><td>21 / 27</td><td>$0.83</td><td>25.3</td></tr>
+        <tr><td>Jev only</td><td>24 / 27</td><td>$0.64</td><td>37.3</td></tr>
+        <tr><td><strong>RecoverIQ (Jev + retry gate)</strong></td><td><strong>24 / 27</strong></td><td><strong>$0.56</strong></td><td><strong>42.9</strong></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="case-section container">
+    <h2>Results</h2>
+    <p>
+      RecoverIQ spent 33% less than the rule-based baseline for more clean fixes, with zero budget
+      violations. The biggest gap was silent workspace corruption: Jev restored the checkpoint 3 of 3
+      times for $0.007 in total, while the rules failed all 3 for $0.36.
+    </p>
+    <p>
+      A checkout task made it easy to see. A store's tax setting is changed from 8% to 80% while the agent
+      fixes a shipping bug. RecoverIQ fixed it cleanly every time in about 10 seconds for $0.0068. Fixed retry gave up.
+      The rule-based strategy escalated to the expensive model, which "passed" by rewriting the settings file.
+    </p>
+    <p class="case-note">
+      Caveats: 3 repeats per cell is a small sample, and the retry gate was tuned after the first live call.
+      If human time is priced at $0.50 per escalation, fixed retry has the best ratio because it never asks a human.
+    </p>
+  </section>
+
+  <section class="case-section container">
+    <h2>Lessons</h2>
+    <p>
+      "Tests pass" is not the same as "fixed". Real models will game contradictory tests (Opus returned a
+      <code>str</code> subclass whose <code>__eq__</code> made both tests pass) or patch around damage instead of
+      repairing it. Measuring clean successes, and labeling every simulated number as simulated, mattered
+      more than any single strategy choice.
+    </p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Sanghamitra Johri</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
